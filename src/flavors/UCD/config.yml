@@ -65,7 +65,7 @@ activity:
 place:
   adding_supported: true
   add_button_label: _(Request a Bike Rack)
-  title: _(Snap a photo of the pedestrian obstacle...)
+  title: _(Snap a photo of the suggested location...)
   action_text: _(requested)
   anonymous_name: _(Someone)
   submit_button_label: _(Submit)
@@ -95,7 +95,8 @@ place:
         - key: size
           value: 30
     - prompt: _(Your email)
-      type: text
+      help_text: _(We will not share your contact information. We will only use it to follow up with you if we have any questions.)
+      type: email
       name: private-email
       optional: true
       attrs:
