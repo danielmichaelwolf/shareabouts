@@ -1,9 +1,9 @@
 # Settings for the app
 app:
   # HTML Title
-  title: Walk Philly | Mapping Pedestrian Obstacles
+  title: Bike Philly | Mapping Bike Parking Suggestions
   # Header name
-  name: Walk Philly
+  name: Bike Philly
   # Meta description that will show up in Google search results
   meta_description: _(Walk Philly is a tool to crowdsource pedestrian obstacles in Philadelphia. It is powered by Shareabouts, a mapping tool to gather public input. Use it to collect suggested locations and comments in a social, engaging process.)
 
