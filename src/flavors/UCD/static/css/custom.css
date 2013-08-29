@@ -12,35 +12,34 @@
 -------------------------------------------------------------- */
 
 body, select, input, textarea {
+  font-family: 'Rosario',Arial,Helvetica,sans-serif;
 }
 
 #content {
   font-size: 1.2em;
   line-height: 1.5em;
+  background-color: #756B47;
 }
 
 #content > article {
   background: #f6f5ec;
-  padding: 0;
+  padding-top: 0.5em;
 }
 
 #content > article h1,
 #content > article h4 {
   font-family: 'Open Sans Condensed',Arial,Helvetica,sans-serif;
   color: #766D61;
-  padding: 0.5em 20px;
 }
 
 #content p {
   font-family: 'Rosario',Arial,Helvetica,sans-serif;
-  margin: 1em 20px;
 }
 
 #save-place-btn {
-  margin: auto 20px;
-  font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif;
-  font-weight: normal;
-  background-color: #893003;
+  /*font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif;*/
+  /*font-weight: normal;*/
+  /*background-color: #893003;*/
 }
 
 /* =Links
@@ -186,8 +185,10 @@ textarea {
 }
 
 .bttn {
+  font-family: 'Open Sans Condensed', Arial, Helvetica, sans-serif;
+  font-weight: normal;
   border-radius: 10px;
-  background-color: #96C;
+  background-color: #893003;
   text-shadow: 1px -1px 0 rgba(0, 0, 0, 0.25);
 }
 
@@ -255,17 +256,43 @@ a.reply-link:hover {
 /* =Voting & Social Promotion
 -------------------------------------------------------------- */
 .promotion {
-/*  background-color: #bf8fbf;*/
+  background-color: #756B47;
 }
 
+.share-twitter a {
+  background-image: url(http://universitycity.org/sites/all/themes/ucds/images/ico-socials.png);
+  background-repeat: no-repeat;
+  background-position-y: 0px;
+}
+
+.share-facebook a {
+  background-image: url(http://universitycity.org/sites/all/themes/ucds/images/ico-socials.png);
+  background-repeat: no-repeat;
+  background-position-y: -36px;
+}
+
+/* =Unsupported */
 #user_support label {
-/*  color: #ff80ff;*/
-/*  background-color: #fff;*/
+  color: #2E261F;
+  background: transparent url(images/support-empty.png) 5px 4px no-repeat scroll;
+  background-color: #fff;
+  padding-left: 40px;
 }
 
 #user_support:hover label,
 #user_support label:hover {
-/*  color: #e500e5;*/
+  color: #C4BD2F;
+}
+
+/* =Supported */
+#user_support input[type=checkbox]:checked ~ label {
+  background-color: #C4BD2F;
+  background-image: url(images/support-full.png);
+}
+
+#user_support:hover input[type=checkbox]:checked ~ label,
+#user_support input[type=checkbox]:checked ~ label:hover {
+  color: #fff;
 }
 
 
@@ -348,6 +375,10 @@ ul.recent-points {
 
   #content {
     top: 125px;
+  }
+
+  #content > article {
+    padding-top: 2em;
   }
 
   .access {
