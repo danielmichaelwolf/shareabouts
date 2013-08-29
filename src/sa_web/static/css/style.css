@@ -709,6 +709,12 @@ textarea {
   color: #f0f0f0;
 }
 
+.help-text {
+  margin-top: -0.85em;
+  font-size: 0.85em;
+  color: #888;
+}
+
 /* Voting & Sharing */
 .promotion {
   background: #eee;

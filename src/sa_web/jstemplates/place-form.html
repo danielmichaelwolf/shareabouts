@@ -46,7 +46,12 @@
                 {{^is_fileinput_supported}}Sorry, your browser doesn't support file uploads.{{/is_fileinput_supported}}
               </span>
               {{/is_file}}
+
+              {{# help_text }}
+              <div class="help-text place-{{ name }}-help-text">{{ help_text }}</div>
+              {{/ help_text }}
             </p>
+  
             {{/ place_config.items }}
           </fieldset>
 

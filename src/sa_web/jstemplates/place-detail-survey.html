@@ -66,6 +66,10 @@
                     </select>
                     {{/is_select}}
                   </div>
+
+                  {{# help_text }}
+                  <div class="help-text survey-{{ name }}-help-text">{{ help_text }}</div>
+                  {{/ help_text }}
                 </div>
 
               {{/survey_config.items}}
