@@ -629,12 +629,14 @@ label {
 }
 input[type=text],
 input[type=number],
+input[type=email],
 textarea {
   background-color: rgba(255,255,255,0);
   border: 1px solid #999;
   padding: 1em;
 }
 input[type=text],
+input[type=email],
 input[type=number] {
   width: 80%;
 }
