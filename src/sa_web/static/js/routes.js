@@ -1,3 +1,5 @@
+/*globals Backbone jQuery _ */
+
 var Shareabouts = Shareabouts || {};
 
 (function(S, $, console){
@@ -11,17 +13,19 @@ var Shareabouts = Shareabouts || {};
     },
 
     initialize: function(options) {
-      var startPageConfig;
+      var self = this,
+          startPageConfig,
+          placeParams = {};
 
-      this.collection = new S.PlaceCollection([], {
-        responseType: options.surveyConfig['submission_type'],
-        supportType: options.supportConfig['submission_type']
-      });
-      this.activities = new S.ActivityCollection(options.activity);
+      this.collection = new S.PlaceCollection([]);
+      this.activities = new S.ActionCollection(options.activity);
       this.appView = new S.AppView({
         el: 'body',
         collection: this.collection,
         activities: this.activities,
+
+        config: options.config,
+
         defaultPlaceTypeName: options.defaultPlaceTypeName,
         placeTypes: options.placeTypes,
         surveyConfig: options.surveyConfig,
@@ -34,10 +38,52 @@ var Shareabouts = Shareabouts || {};
         router: this
       });
 
-      // Call reset after the views are created, since they're all going to
-      // be listening to reset.
-      this.collection.reset(options.places);
-      this.activities.fetch({data: {limit: 20}})
+      // Use the page size as dictated by the server by default, unless
+      // directed to do otherwise in the configuration.
+      if (options.config.app.places_page_size) {
+        placeParams.page_size = options.config.app.places_page_size;
+      }
+
+      // Fetch all places by page
+      this.collection.fetch({
+        remove: false,
+        data: placeParams,
+        success: function(collection, data) {
+          var pageSize = data.features.length,
+              totalPages = Math.ceil(data.metadata.length / pageSize),
+              $progressContainer = $('#map-progress'),
+              $currentProgress = $('#map-progress .current-progress'),
+              pagesComplete = 1,
+              onPageFetch = function() {
+                var percent = (pagesComplete/totalPages*100);
+                pagesComplete++;
+                $currentProgress.width(percent + '%');
+
+                if (pagesComplete === totalPages) {
+                  _.delay(function() {
+                    $progressContainer.hide();
+                  }, 2000);
+                }
+              },
+              i;
+
+          if (data.metadata.next) {
+            $progressContainer.show();
+
+            $currentProgress.width((pagesComplete/totalPages*100) + '%');
+            for (i=2; i <= totalPages; i++) {
+
+              self.collection.fetch({
+                remove: false,
+                data: _.extend(placeParams, { page: i }),
+                complete: onPageFetch
+              });
+            }
+          }
+        }
+      });
+
+      this.activities.fetch({reset: true});
 
       // Start tracking the history
       var historyOptions = {pushState: true};
@@ -54,7 +100,7 @@ var Shareabouts = Shareabouts || {};
         });
 
         if (startPageConfig && startPageConfig.slug) {
-          this.navigate('page/' + startPageConfig.slug);
+          this.navigate('page/' + startPageConfig.slug, {trigger: true});
         }
       }
     },
@@ -68,8 +114,7 @@ var Shareabouts = Shareabouts || {};
     },
 
     viewPlace: function(id) {
-      var model = this.collection.get(id);
-      this.appView.viewPlace(model);
+      this.appView.viewPlace(id);
     },
 
     editPlace: function(){},
@@ -79,4 +124,4 @@ var Shareabouts = Shareabouts || {};
     }
   });
 
-})(Shareabouts, jQuery, Shareabouts.Util.console);
+}(Shareabouts, jQuery, Shareabouts.Util.console));

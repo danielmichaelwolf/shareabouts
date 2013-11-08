@@ -173,10 +173,14 @@ generate the following HTML:
      name="submitter_name"
 	 size="30" placeholder="Type Your Name Here">
 
-The *optional* setting adds some text to the form
-label, but it also is used when validating your form, so if optional
-is omitted or set to false, the user will get an error if they don't
-provide a value.
+The *optional* setting can be used to indicate optional items.
+* with `optional: true`, the user sees _(optional)_ added to the form
+label. The setting has no other effect.
+* with `optional:` omitted, users can leave form items blank, and will not see the _(optional)_ 
+label. You may prefer this if all your items are optional.
+
+To make an item required, use the `attr` section to set `key: required` and  `value: true`. We're using HTML5 validation, so browsers handle this differently 
+(or [not at all](http://caniuse.com/form-validation)).
 
 The *label* setting can also be used for a place item. It is used as the label
 for that input value when it is displayed in the place detail view after it
@@ -403,9 +407,9 @@ set the "external" property to "true".  For example:
       url: http://www.openplans.org/
       external: true
 
-**Note: Do not include `<script>` tags in your pages. If you want to do custom
+**NOTE** Do not include `<script>` tags in your pages. If you want to do custom
   scripting from within your flavor, add your scripts to the includes template
-  (*templates/includes.html*).**
+  (_templates/includes.html_).
 
 ### Styling
 
