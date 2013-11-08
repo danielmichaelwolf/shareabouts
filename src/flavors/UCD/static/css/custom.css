@@ -352,7 +352,8 @@ ul.recent-points {
     height: 100px;
   }
 
-  #site-title {
+  #site-title,
+  .has-pages #site-title {
     margin: 10px auto;
 
     /* This is an 82x115 image */
@@ -418,4 +419,8 @@ ul.recent-points {
 }
 
 @media only screen and (min-width: 1300px) {
+  #site-title a:link, #site-title a:visited {
+    font-size: 1em;
+    line-height: 1.25;
+  }
 }
