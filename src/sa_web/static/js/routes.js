@@ -17,6 +17,16 @@ var Shareabouts = Shareabouts || {};
           startPageConfig,
           placeParams = {};
 
+      S.PlaceModel.prototype.getLoggingDetails = function() {
+        return this.id;
+      };
+      
+      // Global route changes
+      this.bind('route', function(route, router) {
+        S.Util.log('ROUTE', self.getCurrentPath());
+      });
+
+      this.loading = true;
       this.collection = new S.PlaceCollection([]);
       this.activities = new S.ActionCollection(options.activity);
       this.appView = new S.AppView({
@@ -45,44 +55,9 @@ var Shareabouts = Shareabouts || {};
       }
 
       // Fetch all places by page
-      this.collection.fetch({
-        remove: false,
-        data: placeParams,
-        success: function(collection, data) {
-          var pageSize = data.features.length,
-              totalPages = Math.ceil(data.metadata.length / pageSize),
-              $progressContainer = $('#map-progress'),
-              $currentProgress = $('#map-progress .current-progress'),
-              pagesComplete = 1,
-              onPageFetch = function() {
-                var percent = (pagesComplete/totalPages*100);
-                pagesComplete++;
-                $currentProgress.width(percent + '%');
+      this.loadPlaces(placeParams);
 
-                if (pagesComplete === totalPages) {
-                  _.delay(function() {
-                    $progressContainer.hide();
-                  }, 2000);
-                }
-              },
-              i;
-
-          if (data.metadata.next) {
-            $progressContainer.show();
-
-            $currentProgress.width((pagesComplete/totalPages*100) + '%');
-            for (i=2; i <= totalPages; i++) {
-
-              self.collection.fetch({
-                remove: false,
-                data: _.extend(placeParams, { page: i }),
-                complete: onPageFetch
-              });
-            }
-          }
-        }
-      });
-
+      // Fetch the first page of activity
       this.activities.fetch({reset: true});
 
       // Start tracking the history
@@ -103,6 +78,52 @@ var Shareabouts = Shareabouts || {};
           this.navigate('page/' + startPageConfig.slug, {trigger: true});
         }
       }
+
+      this.loading = false;
+    },
+
+    loadPlaces: function(placeParams) {
+      var $progressContainer = $('#map-progress'),
+          $currentProgress = $('#map-progress .current-progress'),
+          pageSize,
+          totalPages,
+          pagesComplete = 0;
+
+      this.collection.fetchAllPages({
+        remove: false,
+        data: placeParams,
+
+        // Only do this for the first page...
+        pageSuccess: _.once(function(collection, data) {
+          pageSize = data.features.length;
+          totalPages = Math.ceil(data.metadata.length / pageSize);
+          
+          if (data.metadata.next) {
+            $progressContainer.show();
+          }
+        }),
+
+        // Do this for every page...
+        pageComplete: function() {
+          var percent;
+
+          pagesComplete++;
+          percent = (pagesComplete/totalPages*100);
+          $currentProgress.width(percent + '%');
+
+          if (pagesComplete === totalPages) {
+            _.delay(function() {
+              $progressContainer.hide();
+            }, 2000);
+          }
+        }
+      });
+    },
+
+    getCurrentPath: function() {
+      var root = Backbone.history.root,
+          fragment = Backbone.history.fragment;
+      return root + fragment;
     },
 
     viewMap: function() {
@@ -114,7 +135,7 @@ var Shareabouts = Shareabouts || {};
     },
 
     viewPlace: function(id) {
-      this.appView.viewPlace(id);
+      this.appView.viewPlace(id, this.loading);
     },
 
     editPlace: function(){},
