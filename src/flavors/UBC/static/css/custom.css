@@ -12,7 +12,26 @@
 /* =Media Queries
 -------------------------------------------------------------- */
 
+.has-pages #site-title {
+  padding-left: 60px;
+  background-image: url(/static/ubc_logo_small.png);
+  background-repeat: no-repeat;
+  background-position: 0;
+}
+
+#site-header {
+  background-color: white;
+}
+
+.auth-nav-container {
+  display: none;
+}
+
 @media only screen and (min-width: 768px) {
+  .has-pages #site-title {
+    padding-left: 80px;
+    background-image: url(/static/ubc_logo_mid.png);
+  }
 }
 
 @media only screen and (min-width: 1024px) {
