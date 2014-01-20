@@ -95,12 +95,9 @@ place:
     - inputfile_label: _(Add a photo)
       type: file
       name: my_image
-      optional: true
       attrs:
         - key: accept
           value: image/*
-        - key: required
-          value: required
     - prompt: _(Why here?)
       type: textarea
       name: description
