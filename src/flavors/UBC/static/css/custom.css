@@ -88,6 +88,11 @@ label {
 
 .btn-primary, .btn-primary:visited, .btn-primary:link {
   background-color: #4767a0;
+  font-size: 1.25em;
+}
+
+.btn-small {
+  font-size: 1em;
 }
 
 /* =Media Queries
