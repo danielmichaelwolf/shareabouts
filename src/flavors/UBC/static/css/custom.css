@@ -5,36 +5,116 @@
  */
 
 
+/* =Font imports
+-------------------------------------------------------------- */
+
+/* This font is similar to the UBC logo */
+@import url(http://fonts.googleapis.com/css?family=Bitter:400,700);
+
+/* This is the body font from the UCD map */
+@import url(http://fonts.googleapis.com/css?family=Rosario);
+@import url(http://fonts.googleapis.com/css?family=Open+Sans+Condensed:300);
+
+
+/* =Base Typography
+-------------------------------------------------------------- */
+
+body, select, input, textarea {
+  font-family: 'Rosario',Arial,Helvetica,sans-serif;
+}
+
+#content > article h1,
+#content > article h4 {
+  font-family: 'Open Sans Condensed',Arial,Helvetica,sans-serif;
+  color: #766D61;
+}
+
+
 /* =Header
 -------------------------------------------------------------- */
 
-
-/* =Media Queries
--------------------------------------------------------------- */
-
 .has-pages #site-title {
-  padding-left: 60px;
+  margin-left: 3.25em;
+  padding-left: 45px;
   background-image: url(/static/ubc_logo_small.png);
   background-repeat: no-repeat;
   background-position: 0;
+  font-family: 'Bitter', serif;
+}
+
+#site-title a:link, #site-title a:visited {
+  color: #4767a0;
 }
 
 #site-header {
   background-color: white;
 }
 
-.auth-nav-container {
+#auth-nav-container {
   display: none;
 }
 
-@media only screen and (min-width: 768px) {
-  .has-pages #site-title {
-    padding-left: 80px;
-    background-image: url(/static/ubc_logo_mid.png);
-  }
+
+/* =Widgets
+-------------------------------------------------------------- */
+
+input[type=email] {
+  outline: 0;
+  border: 0.25em solid #a3c7d9;
+  border-radius: 0;
+  padding: 0.5em;
+  display: block;
+  width: 100%;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-@media only screen and (min-width: 1024px) {
+label {
+  /*font-size: 1em;*/
+  text-transform: none;
+  font-weight: bold;
+}
+
+.progress-bar span {
+  background: #4767a0;
+}
+
+.btn, .btn:visited, .btn:link {
+  text-transform: none;
+  font-family: 'Open Sans Condensed',Arial,Helvetica,sans-serif;
+  font-weight: normal;
+}
+
+.btn-primary, .btn-primary:visited, .btn-primary:link {
+  background-color: #4767a0;
+}
+
+/* =Media Queries
+-------------------------------------------------------------- */
+
+@media only screen and (min-width: 768px) {
+}
+
+@media only screen and (min-width: 60em) {
+  .has-pages #site-title {
+  	margin-left: 0;
+    padding-left: 80px;
+    background-image: url(/static/ubc_logo_mid.png);
+    height: 75px;
+  }
+
+  #site-header {
+    padding-top: 0;
+  }
+
+  #site-header a {
+    margin-top: 0.166em;
+  }
+
+  #content > article {
+  	padding: 1em 2em 2em;
+  }
 }
 
 @media only screen and (min-width: 1300px) {

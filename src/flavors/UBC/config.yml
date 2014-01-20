@@ -3,7 +3,7 @@ app:
   # HTML Title
   title: Bike Rack Requests | Mapping Bike Parking Suggestions
   # Header name
-  name: Bike Rack Requests
+  name: Rack Requests
   # Meta description that will show up in Google search results
   meta_description: _(This is a tool to crowdsource bike rack suggestions in University City. It is powered by Shareabouts, a mapping tool to gather public input. Use it to collect suggested locations and comments in a social, engaging process.)
 
