@@ -91,7 +91,7 @@ place:
       type: hidden
       attrs:
         - key: value
-          value: request_a_bike_rack
+          value: bike_rack_request
     - inputfile_label: _(Add a photo)
       type: file
       name: my_image
