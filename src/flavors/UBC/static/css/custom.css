@@ -35,8 +35,8 @@ body, select, input, textarea {
 
 .has-pages #site-title {
   margin-left: 3.25em;
-  padding-left: 45px;
-  background-image: url(/static/ubc_logo_small.png);
+  padding-left: 82px;
+  background-image: url(/static/ubc_bigtext_logo_small.png);
   background-repeat: no-repeat;
   background-position: 0;
   font-family: 'Bitter', serif;
@@ -104,8 +104,8 @@ label {
 @media only screen and (min-width: 60em) {
   .has-pages #site-title {
   	margin-left: 0;
-    padding-left: 80px;
-    background-image: url(/static/ubc_logo_mid.png);
+    padding-left: 150px;
+    background-image: url(/static/ubc_bigtext_logo_mid.png);
     height: 75px;
   }
 
