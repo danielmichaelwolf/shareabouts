@@ -102,13 +102,13 @@ place:
       type: textarea
       name: description
       optional: true
-    # - prompt: _(Your name)
-    #   type: text
-    #   name: submitter_name
-    #   optional: true
-    #   attrs:
-    #     - key: size
-    #       value: 30
+    - prompt: _(Your name)
+      type: text
+      name: submitter_name
+      optional: true
+      attrs:
+        - key: size
+          value: 30
     - prompt: _(Your email)
       help_text: _(We will not share your contact information. We will only use it to follow up with you if we have any questions.)
       type: email

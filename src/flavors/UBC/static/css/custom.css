@@ -95,6 +95,16 @@ label {
   font-size: 1em;
 }
 
+.or-sign-in {
+  display: none;
+}
+
+.help-text {
+  margin-top: -1em;
+  font-size: 0.8em;
+  color: #888;
+}
+
 /* =Media Queries
 -------------------------------------------------------------- */
 
