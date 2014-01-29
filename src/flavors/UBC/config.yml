@@ -1,9 +1,9 @@
 # Settings for the app
 app:
   # HTML Title
-  title: Bike Rack Requests | Mapping Bike Parking Suggestions
+  title: got bike racks? | Mapping Bike Parking Suggestions
   # Header name
-  name: Rack Requests
+  name: got bike racks?
   # Meta description that will show up in Google search results
   meta_description: _(This is a tool to crowdsource bike rack suggestions in University City. It is powered by Shareabouts, a mapping tool to gather public input. Use it to collect suggested locations and comments in a social, engaging process.)
 
@@ -43,7 +43,7 @@ map:
 # The values map the place type to map icons (defined below).
 place_types:
   bike_rack_request:
-    label: _(Bike Rack Request)
+    label: _(Bike Rack)
     rules:
       - condition: '"{{location_type}}" === "bike_rack_request"'
         # Display landmarks as icons

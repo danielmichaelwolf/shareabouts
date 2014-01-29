@@ -44,10 +44,19 @@ body, select, input, textarea {
 
 #site-title a:link, #site-title a:visited {
   color: #4767a0;
+  text-shadow: none;
+  border-left: 2px solid #4767a0;
+  font-size: 18px;
+  margin-top: 10px;
+  padding-left: 5px;
 }
 
 #site-header {
   background-color: white;
+}
+
+#site-title {
+  min-height: 40px;
 }
 
 #auth-nav-container {
@@ -117,6 +126,12 @@ label {
     padding-left: 150px;
     background-image: url(/static/ubc_bigtext_logo_mid.png);
     height: 75px;
+  }
+
+  #site-title a:link, #site-title a:visited {
+    font-size: 33px;
+    margin-top: 18px;
+    padding-left: 6px;
   }
 
   #site-header {
