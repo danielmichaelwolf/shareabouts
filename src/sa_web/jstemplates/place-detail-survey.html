@@ -92,9 +92,9 @@
                     {{/is_select}}
                   </div>
 
-                  {{# help_text }}
-                  <div class="help-text survey-{{ name }}-help-text">{{ help_text }}</div>
-                  {{/ help_text }}
+                  {{#if help_text }}
+                  <div class="help-text place-{{ name }}-help-text">{{ help_text }}</div>
+                  {{/if}}
                 </div>
 
               {{/survey_config.items}}

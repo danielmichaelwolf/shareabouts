@@ -8,6 +8,7 @@
 
           <fieldset>
             <input type="hidden" name="visible" value="on">
+            <input type="hidden" name="user_token" value="{{{ user_token }}}">
 
             <!-- TODO We need user data in the template to know whether a user
                       is already logged in.
@@ -66,9 +67,9 @@
               <!--<![endif]-->
               {{/is_file}}
 
-              {{# help_text }}
+              {{#if help_text }}
               <div class="help-text place-{{ name }}-help-text">{{ help_text }}</div>
-              {{/ help_text }}
+              {{/if}}
             </p>
   
             {{/ place_config.items }}
