@@ -79,8 +79,7 @@ body, select, input, textarea {
 -------------------------------------------------------------- */
 
 input[type=email] {
-  outline: 0;
-  border: 0.25em solid #a3c7d9;
+  border: 0.25em solid #4767a0;
   border-radius: 0;
   padding: 0.5em;
   display: block;
@@ -88,6 +87,18 @@ input[type=email] {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+textarea:focus,
+input[type=text]:focus,
+input[type=email]:focus {
+  outline: 2px solid #6c9ef5;
+}
+
+textarea,
+input[type=text],
+input[type=email] {
+  border-color: #4767a0;
 }
 
 label {
@@ -100,16 +111,37 @@ label {
   background: #4767a0;
 }
 
+.btn-primary, .btn-primary:visited, .btn-primary:link {
+  background-color: #4767a0;
+  font-size: 1.25em;
+}
+
+.btn-large, .btn-large:visited, .btn-large:link {
+  padding: 0.75em;
+}
+
 .btn, .btn:visited, .btn:link {
   text-transform: none;
   font-family: 'Open Sans Condensed',Arial,Helvetica,sans-serif;
   font-weight: normal;
   margin: 0 0 1em;
+  
+  background-color: #4767a0;
+  color: #fff;
+  
+  box-shadow: -0.25em 0.25em 0 rgba(0,0,0,0.1);
+  border: 3px solid rgba(0,0,0,0.05);
+  border-radius: 3px;
 }
 
-.btn-primary, .btn-primary:visited, .btn-primary:link {
+.btn:hover {
+  background-color: #6c9ef5;
+}
+
+.drag-marker-instructions {
   background-color: #4767a0;
-  font-size: 1.25em;
+  color: #ffffff;
+  text-shadow: none;
 }
 
 .btn-small {
