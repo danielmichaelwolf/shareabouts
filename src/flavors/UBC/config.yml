@@ -110,7 +110,7 @@ place:
         - key: size
           value: 30
     - prompt: _(Your email)
-      help_text: _(We will not share your contact information. We will only use it to follow up with you if we have any questions.)
+      help_text: _(Please leave your email if you would like to receive future updates about this project.)
       type: email
       name: private-email
       optional: true
