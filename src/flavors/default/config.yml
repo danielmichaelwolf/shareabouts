@@ -154,6 +154,9 @@ activity:
 place:
   adding_supported: true
   add_button_label: _(Add a Place)
+  # Labels for the buttons that toggle the map and list views
+  show_list_button_label: _(List All Places)
+  show_map_button_label: _(Show the Map)
   action_text: _(added)
   title: _(Tell us more...)
   action_text: _(created)
@@ -167,6 +170,15 @@ place:
       attrs:
         - key: placeholder
           value: _(Name)
+        - key: size
+          value: 30
+    - prompt: _(Your Email)
+      type: text
+      name: private-submitter_email
+      optional: true
+      attrs:
+        - key: placeholder
+          value: _(Email address)
         - key: size
           value: 30
     - prompt: _(Location Name)
@@ -236,6 +248,8 @@ survey:
 support:
   submission_type: support
   submit_btn_text: _(Support)
+  response_name: _(support)
+  response_plural_name: _(supports)
   action_text: supported
   anonymous_name: _(Someone)
 
@@ -253,6 +267,18 @@ pages:
     slug: features
     url: /static/pages/features.html
 
-  - title: _(GitHub)
-    external: true
-    url: https://github.com/openplans/shareabouts
+  - title: _(Links)
+    pages:
+      - title: _(Documentation)
+        external: true
+        url: https://github.com/openplans/shareabouts/tree/master/doc
+      - title: _(Issues)
+        external: true
+        url: https://github.com/openplans/shareabouts/issues
+      - title: _(GitHub)
+        external: true
+        url: https://github.com/openplans/shareabouts
+
+notifications:
+  on_new_place: true
+  submitter_email_field: private-submitter_email
