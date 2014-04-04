@@ -158,6 +158,16 @@ label {
   color: #888;
 }
 
+#user_support,
+#user_support label {
+  cursor: auto;
+  color: #93b7c9;
+}
+#user_support:hover,
+#user_support:hover label {
+  background-color: #4767a0;
+}
+
 /* =Media Queries
 -------------------------------------------------------------- */
 
