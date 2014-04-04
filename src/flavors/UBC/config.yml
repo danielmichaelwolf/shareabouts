@@ -80,7 +80,7 @@ activity:
   interval: 30000
 
 place:
-  adding_supported: true
+  adding_supported: false
   add_button_label: _(Request a Bike Rack)
   action_text: _(requested)
   title: _(Snap a photo of the suggested location...)
